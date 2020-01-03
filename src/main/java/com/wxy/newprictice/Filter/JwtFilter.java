@@ -23,6 +23,7 @@ public class JwtFilter extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("过滤方法执行了");
+        System.out.println("过滤方法执行了");
 
         String authorization = request.getHeader("Authorization");
         if(authorization!=null&&authorization.startsWith("Bearer ")){
