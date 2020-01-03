@@ -1,10 +1,10 @@
 package com.wxy.newprictice.controller;
 
-import com.wxy.newprictice.Filter.JwtFilter;
+
 import com.wxy.newprictice.entity.User;
 import com.wxy.newprictice.service.UserService;
 import com.wxy.newprictice.util.DateUtil;
-import com.wxy.newprictice.util.JwtUtil;
+
 import com.wxy.newprictice.util.RedisUtil;
 import com.wxy.newprictice.util.sendMassage;
 import io.swagger.annotations.Api;
@@ -30,8 +30,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    JwtUtil jwtUtil;
 
 
     @ApiOperation("查询表的全部")
@@ -64,51 +62,51 @@ public class UserController {
     }
 
 
-//    @ApiOperation("检查shiro权限控制")
-//    @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
-//        // 从SecurityUtils里边创建一个 subject
-//        Subject subject = SecurityUtils.getSubject();
-//        // 在认证提交前准备 token（令牌）
-//        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-//        // 执行认证登陆
-//        try {
-//            subject.login(token);
-//        } catch (UnknownAccountException uae) {
-//            return "未知账户";
-//        } catch (IncorrectCredentialsException ice) {
-//            return "密码不正确";
-//        } catch (LockedAccountException lae) {
-//            return "账户已锁定";
-//        } catch (ExcessiveAttemptsException eae) {
-//            return "用户名或密码错误次数过多";
-//        } catch (AuthenticationException ae) {
-//            return "用户名或密码不正确！";
-//        }
-//        if (subject.isAuthenticated()) {
-//            User user = new User();
-//            user.setLast_login_time(DateUtil.getCurrent24DateTotal());
-//            return "登录成功";
-//        } else {
-//            token.clear();
-//            return "登录失败";
-//        }
-//    }
-
-
-    @ApiOperation("登陆")
+    @ApiOperation("检查shiro权限控制")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login() {
-       String username = "wxy";
-       String password=  "123";
-       String role = "admin";
-       String id ="123321";
-        //生成一个token
-       String jwt = jwtUtil.createJWT(id, username, role);
-       System.out.println(jwt);
-
-       return jwt;
-
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password) {
+        // 从SecurityUtils里边创建一个 subject
+        Subject subject = SecurityUtils.getSubject();
+        // 在认证提交前准备 token（令牌）
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        // 执行认证登陆
+        try {
+            subject.login(token);
+        } catch (UnknownAccountException uae) {
+            return "未知账户";
+        } catch (IncorrectCredentialsException ice) {
+            return "密码不正确";
+        } catch (LockedAccountException lae) {
+            return "账户已锁定";
+        } catch (ExcessiveAttemptsException eae) {
+            return "用户名或密码错误次数过多";
+        } catch (AuthenticationException ae) {
+            return "用户名或密码不正确！";
+        }
+        if (subject.isAuthenticated()) {
+            User user = new User();
+            user.setLast_login_time(DateUtil.getCurrent24DateTotal());
+            return "登录成功";
+        } else {
+            token.clear();
+            return "登录失败";
+        }
     }
+
+
+//    @ApiOperation("登陆")
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String login() {
+//       String username = "wxy";
+//       String password=  "123";
+//       String role = "admin";
+//       String id ="123321";
+//        //生成一个token
+//       String jwt = jwtUtil.createJWT(id, username, role);
+//       System.out.println(jwt);
+//
+//       return jwt;
+//
+//    }
 
 }

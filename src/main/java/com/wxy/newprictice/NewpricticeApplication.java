@@ -4,7 +4,6 @@ package com.wxy.newprictice;
 
 
 
-import com.wxy.newprictice.util.JwtUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -22,9 +21,4 @@ public class NewpricticeApplication {
         SpringApplication.run(NewpricticeApplication.class, args);
     }
 
-
-    @Bean
-    public JwtUtil jwtUtil(){
-        return new JwtUtil();
-    }
 }
