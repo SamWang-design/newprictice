@@ -1,0 +1,25 @@
+#端口配置
+server:
+  port: 8080
+#jdbc配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/webtest?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    timeout: 20000
+    password:
+jpa:
+  hibernate:
+    dl-auto: update
+
+#mybatis配置
+mybatis:
+  #实体类所在包名
+  type-aliases-package: com.wxy.newprictice.entity
+
