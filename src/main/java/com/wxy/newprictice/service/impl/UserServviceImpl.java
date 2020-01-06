@@ -38,7 +38,7 @@ public class UserServviceImpl implements UserService {
         Condition condition = new Condition(User.class);
         Example.Criteria c = condition.createCriteria();
         if(StringUtil.isNotEmpty(username)){
-            c.andEqualTo("username",username);
+            c.andEqualTo("nickname",username);
         }
         User user = userMapper.selectOneByExample(condition);
         return user;

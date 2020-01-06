@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-
+@Table(name = "u_user")
 public class User implements Serializable {
-   private int id;
+   private Integer id;
    private String nickname;
    private String email;
    private String pswd;
@@ -17,12 +17,11 @@ public class User implements Serializable {
    private String last_login_time;
    private int stuat;
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

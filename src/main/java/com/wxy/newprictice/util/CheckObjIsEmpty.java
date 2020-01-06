@@ -5,12 +5,12 @@ import org.apache.commons.lang.StringUtils;
 
 import java.lang.reflect.Field;
 
-public class checkIsEmpty {
+public class CheckObjIsEmpty {
+
     public static boolean checkObjAllFieldsIsNull(Object object) {
         if (null == object) {
             return true;
         }
-
         try {
             for (Field f : object.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
