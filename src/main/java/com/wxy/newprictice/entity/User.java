@@ -15,7 +15,7 @@ public class User implements Serializable {
    private String pswd;
    private String createTime;
    private String last_login_time;
-   private int stuat;
+   private Integer status;
 
     public Integer getId() {
         return id;
@@ -65,11 +65,11 @@ public class User implements Serializable {
         this.last_login_time = last_login_time;
     }
 
-    public int getStuat() {
-        return stuat;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStuat(int stuat) {
-        this.stuat = stuat;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

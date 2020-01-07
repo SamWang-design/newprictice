@@ -45,8 +45,13 @@ public class UserServviceImpl implements UserService {
     }
 
     @Override
-    public void add(User user) {
-        int insert = userMapper.insert(user);
+    public void addOrUpdate(User user) {
+        if(user.getId()==null){
+            int insert = userMapper.insert(user);
+        }else {
+            int i = userMapper.updateByPrimaryKey(user);
+        }
+
     }
 
 }
